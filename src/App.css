@@ -1,4 +1,19 @@
+body {
+  background-color: rgb(214, 214, 214);
+}
+
+* {
+  transition: all 0.3s;
+}
 .card-img-top {
   height: 28vh;
   width: 100%;
+}
+
+.btn btn-grey {
+  background-color: grey;
+}
+
+.card-dark {
+  background-color: grey;
 }

@@ -1,13 +1,13 @@
 import React, { Component } from "react";
-import PropTypes from "prop-types";
 
 export class Navbar extends Component {
   static propTypes = {};
 
   render() {
+    let { darkMode, mode } = this.props;
     return (
       <div>
-        <nav className="navbar navbar-expand-lg bg-body-tertiary">
+        <nav className={`navbar navbar-expand-lg navbar-${mode} bg-${mode}`}>
           <div className="container-fluid">
             <a className="navbar-brand" href="#">
               CurrentBuzz
@@ -41,6 +41,13 @@ export class Navbar extends Component {
               </ul>
             </div>
           </div>
+          <button
+            type="button"
+            onClick={darkMode}
+            className={`btn btn-${mode === "light" ? "dark" : "light"} me-2`}
+          >
+            {mode === "light" ? "dark" : "light"}
+          </button>
         </nav>
       </div>
     );
