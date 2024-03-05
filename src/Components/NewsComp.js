@@ -1,8 +1,21 @@
 import React, { Component } from "react";
 import NewItem from "./NewItem";
 import Spinner from "./Spinner";
+import PropTypes from "prop-types";
 
 export default class NewsComp extends Component {
+  static defaultProps = {
+    country: "in",
+    pageSize: 20,
+    category: "general",
+  };
+
+  static propTypes = {
+    country: PropTypes.string,
+    pageSize: PropTypes.number,
+    category: PropTypes.string,
+  };
+
   constructor() {
     super();
 
@@ -14,8 +27,8 @@ export default class NewsComp extends Component {
   }
 
   async componentDidMount() {
-    let url = `https://newsapi.org/v2/top-headlines?country=in&category=sports&apiKey=db3992c789f14b5490b0afd6d9a84692&pagesize=${this.props.pagesize}`;
-
+    let url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=db3992c789f14b5490b0afd6d9a84692&pagesize=${this.props.pagesize}`;
+    // console.log(this.props.country);
     let response = await fetch(url);
     let parsed = await response.json();
 
@@ -27,7 +40,11 @@ export default class NewsComp extends Component {
 
   handlePrevClick = async () => {
     console.log(this.state.page);
-    let url = `https://newsapi.org/v2/top-headlines?country=in&category=sports&apiKey=db3992c789f14b5490b0afd6d9a84692&page=${
+    let url = `https://newsapi.org/v2/top-headlines?country=${
+      this.props.country
+    }&category=${
+      this.props.category
+    }&apiKey=db3992c789f14b5490b0afd6d9a84692&page=${
       this.state.page - 1
     }&pagesize=${this.props.pagesize}`;
     this.setState({ loading: true });
@@ -46,7 +63,11 @@ export default class NewsComp extends Component {
       // page handling
       return;
     }
-    let url = `https://newsapi.org/v2/top-headlines?country=in&category=sports&apiKey=db3992c789f14b5490b0afd6d9a84692&page=${
+    let url = `https://newsapi.org/v2/top-headlines?country=${
+      this.props.country
+    }&category=${
+      this.props.category
+    }&apiKey=db3992c789f14b5490b0afd6d9a84692&page=${
       this.state.page + 1
     }&pagesize=${this.props.pagesize}`;
     this.setState({ loading: true });
@@ -65,7 +86,7 @@ export default class NewsComp extends Component {
     let defaultimg =
       "https://th.bing.com/th/id/OIP.g1JO9ZrlnaJoFq4qUGVZsQHaE7?rs=1&pid=ImgDetMain";
     return (
-      <div className="container my-3">
+      <div className="container my-6">
         <div className="container d-flex justify-content-between">
           <button
             type="button"

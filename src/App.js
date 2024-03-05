@@ -29,7 +29,7 @@ export default class App extends Component {
     return (
       <div>
         <Navbar darkMode={this.darkMode} mode={this.state.mode} />
-        <NewsComp mode={this.state.mode} pagesize = {5} />
+        <NewsComp mode={this.state.mode} pageSize={20} category={"sports"} />
       </div>
     );
   }

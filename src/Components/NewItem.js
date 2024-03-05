@@ -10,7 +10,7 @@ export class NewItem extends Component {
         <div
           className={`card bg-${mode === "light" ? "light" : "dark"}`}
           style={{
-            width: "18rem",
+            width: "21rem",
             height: "60vh",
             color: `${mode === "light" ? "black" : "white"}`,
           }}
