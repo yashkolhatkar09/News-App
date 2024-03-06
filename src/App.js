@@ -5,8 +5,8 @@ import NewsComp from "./Components/NewsComp";
 import React, { Component }  from "react";
 import {
   BrowserRouter as Router,
-  Switch,
   Route,
+  Routes
 } from "react-router-dom";
 
 export default class App extends Component {
@@ -34,20 +34,20 @@ export default class App extends Component {
   render() {
     return (
       <div>
-        <Router>
+        
+        
+      <Router>
           <Navbar darkMode={this.darkMode} mode={this.state.mode} />
-          <Switch>
-            <Route exact path="/"><NewsComp mode={this.state.mode} key = "general" pageSize={20} category={"general"}/>{" "}</Route>
-            <Route exact path="/business"><NewsComp key = "business" mode={this.state.mode} pageSize={20} category={"business"}/>{" "} </Route>
-            <Route exact path="/entertainment"><NewsComp key = "entertainment" mode={this.state.mode} pageSize={20} category={"entertainment"} />{" "}</Route>
-            <Route exact path="/health"> <NewsComp key = "health" mode={this.state.mode} pageSize={20} category={"health"}/>{" "}</Route>
-            <Route exact path="/science"> <NewsComp key = "science" mode={this.state.mode} pageSize={20} category={"science"}/>{" "}</Route>
-            <Route exact path="/sports"><NewsComp key = "sports" mode={this.state.mode} pageSize={20} category={"sports"} />{" "}</Route>
-            <Route exact path="/technology"><NewsComp key = "technology" mode={this.state.mode} pageSize={20} category={"technology"}/>{" "}</Route>
-          </Switch>
-   
-
-        </Router>
+        <Routes>
+          <Route path="/" element = {<NewsComp key = "general" mode={this.state.mode} pageSize={20} category={"general"}/>}/>
+          <Route path="/business" element = {<NewsComp key = "business" mode={this.state.mode} pageSize={20}category={"business" }/>}/>
+          <Route path="/entertainment" element = {<NewsComp key = "entertainment" mode={this.state.mode} pageSize={20} category={"entertainment"}/>}/>
+          <Route path="/health" element = {<NewsComp key = "health" mode={this.state.mode} pageSize={20} category={"health"}/>}/>
+          <Route path="/science" element = {<NewsComp key = "science" mode={this.state.mode} pageSize={20} category={"science"}/>}/>
+          <Route path="/sports" element = {<NewsComp key = "sports" mode={this.state.mode} pageSize={20} category={"sports"}/>}/>
+          <Route path="/technology" element = {<NewsComp key = "technology" mode={this.state.mode} pageSize={20} category={"technology"}/>}/>
+        </Routes>
+     </Router>
       </div>
     );
   }
