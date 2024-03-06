@@ -1,13 +1,19 @@
 import "./App.css";
-import React, { Component } from "react";
+// import React, { Component } from "react";
 import Navbar from "./Components/Navbar";
 import NewsComp from "./Components/NewsComp";
+import React, { Component }  from "react";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+} from "react-router-dom";
 
 export default class App extends Component {
   constructor() {
     super();
     this.state = {
-      mode: "light",
+      mode: "dark",
     };
     this.darkMode = this.darkMode.bind(this);
   }
@@ -28,8 +34,20 @@ export default class App extends Component {
   render() {
     return (
       <div>
-        <Navbar darkMode={this.darkMode} mode={this.state.mode} />
-        <NewsComp mode={this.state.mode} pageSize={20} category={"sports"} />
+        <Router>
+          <Navbar darkMode={this.darkMode} mode={this.state.mode} />
+          <Switch>
+            <Route exact path="/"><NewsComp mode={this.state.mode} key = "general" pageSize={20} category={"general"}/>{" "}</Route>
+            <Route exact path="/business"><NewsComp key = "business" mode={this.state.mode} pageSize={20} category={"business"}/>{" "} </Route>
+            <Route exact path="/entertainment"><NewsComp key = "entertainment" mode={this.state.mode} pageSize={20} category={"entertainment"} />{" "}</Route>
+            <Route exact path="/health"> <NewsComp key = "health" mode={this.state.mode} pageSize={20} category={"health"}/>{" "}</Route>
+            <Route exact path="/science"> <NewsComp key = "science" mode={this.state.mode} pageSize={20} category={"science"}/>{" "}</Route>
+            <Route exact path="/sports"><NewsComp key = "sports" mode={this.state.mode} pageSize={20} category={"sports"} />{" "}</Route>
+            <Route exact path="/technology"><NewsComp key = "technology" mode={this.state.mode} pageSize={20} category={"technology"}/>{" "}</Route>
+          </Switch>
+   
+
+        </Router>
       </div>
     );
   }

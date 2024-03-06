@@ -119,7 +119,7 @@ export default class NewsComp extends Component {
         <div className="row">
           {this.state.articles.map((element) => {
             return (
-              <div className="col-md-4 mb-5" key={element.url}>
+              <div className="col-md-4 mb-5" key={element.url && this.props.key}>
                 <NewItem
                   title={
                     element.title === null

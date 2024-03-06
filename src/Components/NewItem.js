@@ -25,7 +25,7 @@ export class NewItem extends Component {
             <p className="card-text">{description}...</p>
             <a
               href={newsURL}
-              target="_blank"
+              // target="_blank"
               className={`btn btn-${mode === "light" ? "dark" : "primary"}`}
             >
               Read More
